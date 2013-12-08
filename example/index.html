@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html ng-app="viewheadExample">
+<head>
+<title ng-bind="viewTitle ? viewTitle + ' - viewhead example' : 'viewhead example'">viewhead example</title>
+<script src="http://code.angularjs.org/1.2.4/angular.js"></script>
+<script src="http://code.angularjs.org/1.2.4/angular-route.js"></script>
+<script src="../angularjs-viewhead.js"></script>
+<script src="example.js"></script>
+<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+</head>
+<body>
+<header class="navbar navbar-inverse">
+  <div class="container">
+    <div class="navbar-header">
+      <a href="#/" class="navbar-brand">viewhead example</a>
+    </div>
+    <nav>
+      <ul class="nav navbar-nav">
+        <li><a href="#/dynamic-title">Dynamic Title</a></li>
+        <li><a href="#/rss-link">RSS Linking</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div class="container" ng-view ng-cloak>
+
+</div>
+
+</body>
+</html>

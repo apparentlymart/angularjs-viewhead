@@ -1,0 +1,15 @@
+<h1 view-title>RSS Linking</h1>
+
+<link view-head rel="alternate" type="application/rss+xml" href="{{ rssUrl }}">
+
+<p>Some browsers support subscribing to an RSS feed linked from the document's head. This is one example
+of an element you may wish to introduce into the head of the document on a per-view basis.</p>
+
+<p>If your browser supports RSS subscription you may see an RSS icon available for this page. If not, use
+your browser's DOM inspector to look at the head of the document and note the <code>link</code> element.
+This will go away when you navigate to one of the other pages in this demo, and come back when you return.</p>
+
+<p>Most consumers of RSS metadata are robots that can't run the JavaScript on an HTML page, so for best
+results this technique can be combined with a mechanism that creates static snapshots of pages to serve
+to robots. That's obviously out of scope for this module, but at the time of writing several services
+are available that provide such a snapshot feature.</p>

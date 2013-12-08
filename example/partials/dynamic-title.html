@@ -1,0 +1,14 @@
+<h1>Dynamic Title</h1>
+
+<p>The view title can include interpolated template expressions, just like any other element.
+The text field below is bound to the variable <code>chosenTitle</code> in the scope, and then
+the <code>view-title</code> directive also binds to that same variable, allowing the title
+to be set dynamically. Try changing the text below and watch as the document title changes.</p>
+
+<form class="form-inline">
+  <div class="form-group">
+    <input ng-model="chosenTitle" size="40">
+  </div>
+</form>
+
+<view-title>{{chosenTitle}}</view-title>
