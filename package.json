@@ -1,0 +1,25 @@
+{
+	"name": "angularjs-viewhead",
+	"version": "0.0.1",
+	"description": "Change the HTML title and head elements on a per-view basis",
+	"authors": [
+    "Martin Atkins <mart@degeneration.co.uk>"
+  ],
+	"analyze": true,
+	"contributors": [
+		{
+			"name": "Alejandro Moreno",
+			"email": "alejonext@gmail.com"
+		}
+	],
+	"main": "angularjs-viewhead.js",
+	"repository": {
+		"type": "git",
+		"url": "git@github.com:apparentlymart/angularjs-viewhead.git"
+	},
+	"engines": {
+		"node": ">=0.10",
+		"npm": ">=1.1.59"
+	},
+	"license": "MIT"
+}
