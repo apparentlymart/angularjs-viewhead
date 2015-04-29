@@ -7,7 +7,7 @@
 
      mod.directive(
          'viewTitle',
-         ['$rootScope', function ($rootScope, $timeout) {
+         ['$rootScope', '$timeout', function ($rootScope, $timeout) {
              return {
                  restrict: 'EA',
                  link: function (scope, iElement, iAttrs, controller, transcludeFn) {
