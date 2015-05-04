@@ -2,10 +2,12 @@
 (function (angular, document) {
 
      var mod = angular.module('viewhead', []);
+     
+     var title;
 
      mod.directive(
          'viewTitle',
-         ['$rootScope', function ($rootScope) {
+         ['$rootScope', '$timeout', function ($rootScope, $timeout) {
              return {
                  restrict: 'EA',
                  link: function (scope, iElement, iAttrs, controller, transcludeFn) {
@@ -22,13 +24,20 @@
                              return iElement.text();
                          },
                          function (newTitle) {
-                             $rootScope.viewTitle = newTitle;
+                             $rootScope.viewTitle = title = newTitle;
                          }
                      );
                      scope.$on(
                          '$destroy',
                          function () {
-                             delete $rootScope.viewTitle;
+                             title = undefined;
+                             // Wait until next digest cycle do delete viewTitle
+                             $timeout(function() {
+                                 if(!title) {
+                                     // No other view-title has reassigned title.
+                                     delete $rootScope.viewTitle;
+                                 }
+                             });
                          }
                      );
                  }
