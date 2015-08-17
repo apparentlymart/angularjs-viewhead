@@ -1,8 +1,8 @@
 
-(function (angular, document) {
+(function (angular) {
 
      var mod = angular.module('viewhead', []);
-     
+
      var title;
 
      mod.directive(
@@ -47,8 +47,8 @@
 
      mod.directive(
          'viewHead',
-         function () {
-             var head = angular.element(document.head);
+         ['$document', function ($document) {
+             var head = angular.element($document[0].head);
              return {
                  restrict: 'A',
                  link: function (scope, iElement, iAttrs, controller, transcludeFn) {
@@ -70,7 +70,7 @@
                      );
                  }
              };
-         }
+         }]
      );
 
-})(angular, document);
+})(angular);

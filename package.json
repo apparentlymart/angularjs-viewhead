@@ -1,6 +1,6 @@
 {
 	"name": "angularjs-viewhead",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"description": "Change the HTML title and head elements on a per-view basis",
 	"authors": [
     "Martin Atkins <mart@degeneration.co.uk>"
