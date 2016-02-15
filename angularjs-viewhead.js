@@ -1,9 +1,14 @@
 (function (angular) {
+    'use strict';
+
     var mod = angular.module('viewhead', []);
 
-    var title;
+    // Data service that is shared between all directives
+    mod.factory('viewTitleDataService', function () {
+        return {};
+    });
 
-    mod.directive('viewTitle', ['$rootScope', '$timeout', function ($rootScope, $timeout) {
+    mod.directive('viewTitle', ['$rootScope', 'viewTitleDataService', function ($rootScope, viewTitleDataService) {
         return {
             restrict: 'EA',
             link: function (scope, iElement) {
@@ -19,19 +24,18 @@
                 scope.$watch(function () {
                     return iElement.text();
                 }, function (newTitle) {
-                    $rootScope.viewTitle = title = newTitle;
+                    viewTitleDataService.id = scope.$id;
+
+                    $rootScope.viewTitle = newTitle;
                 });
 
                 scope.$on('$destroy', function () {
-                    title = undefined;
+                    // Only remove view title if the current title has been set by this scope
+                    if (viewTitleDataService.id === scope.$id) {
+                        delete $rootScope.viewTitle;
 
-                    // Wait until next digest cycle do delete viewTitle
-                    $timeout(function () {
-                        if (!title) {
-                            // No other view-title has reassigned title.
-                            delete $rootScope.viewTitle;
-                        }
-                    });
+                        delete viewTitleDataService.id;
+                    }
                 });
             }
         };
