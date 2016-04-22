@@ -4,6 +4,7 @@
      var mod = angular.module('viewhead', []);
 
      var title;
+     var titleChanged;
 
      mod.directive(
          'viewTitle',
@@ -24,6 +25,7 @@
                              return iElement.text();
                          },
                          function (newTitle) {
+                             titleChanged = true;
                              $rootScope.viewTitle = title = newTitle;
                          }
                      );
@@ -33,10 +35,11 @@
                              title = undefined;
                              // Wait until next digest cycle do delete viewTitle
                              $timeout(function() {
-                                 if(!title) {
+                                 if(!title && !titleChanged) {
                                      // No other view-title has reassigned title.
                                      delete $rootScope.viewTitle;
                                  }
+                                 titleChanged = false;
                              });
                          }
                      );
